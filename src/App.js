@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import Lenis from '@studio-freight/lenis'
+import ParallaxSection from './components/parallax-section/ParallaxSection'
 
 function App() {
+  useEffect(() => {
+    const lenis = new Lenis()
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-wrapper'>
+      <ParallaxSection />
     </div>
-  );
+    // <div className='App'>
+    //   <header className='App-header'>
+    //     <img src={logo} className='App-logo' alt='logo' />
+    //   </header>
+    // </div>
+  )
 }
 
-export default App;
+export default App
